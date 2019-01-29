@@ -1,31 +1,29 @@
 ## Overview
 
-[![Build Status](https://travis-ci.org/official-stockfish/Stockfish.svg?branch=master)](https://travis-ci.org/official-stockfish/Stockfish)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/official-stockfish/Stockfish?svg=true)](https://ci.appveyor.com/project/mcostalba/stockfish)
-
-[Stockfish](https://stockfishchess.org) is a free, powerful UCI chess engine
-derived from Glaurung 2.1. It is not a complete chess program and requires a
+Prisoners' Chess (PC for short) is a free, powerful UCI chess engine forked from Stockfish. 
+It aims to implement the Prisoners' Chess variant  outlined [here](https://www.chess.com/forum/view/chess960-chess-variants/prisoners-chess).
+Like Stockfish, it is not a complete chess program and requires a
 UCI-compatible GUI (e.g. XBoard with PolyGlot, Scid, Cute Chess, eboard, Arena,
 Sigma Chess, Shredder, Chess Partner or Fritz) in order to be used comfortably.
 Read the documentation for your GUI of choice for information about how to use
-Stockfish with it.
+Stockfish with it: the same instructions are valid for PC too.
 
 
 ## Files
 
-This distribution of Stockfish consists of the following files:
+This distribution of PC consists of the following files:
 
   * Readme.md, the file you are currently reading.
 
   * Copying.txt, a text file containing the GNU General Public License version 3.
 
   * src, a subdirectory containing the full source code, including a Makefile
-    that can be used to compile Stockfish on Unix-like systems.
+    that can be used to compile PC on Unix-like systems.
 
 
 ## UCI parameters
 
-Currently, Stockfish has the following UCI options:
+Currently, PC has the following UCI options:
 
   * #### Debug Log File
     Write all communication to and from the engine into a text file.
@@ -48,14 +46,14 @@ Currently, Stockfish has the following UCI options:
     Clear the hash table.
 
   * #### Ponder
-    Let Stockfish ponder its next move while the opponent is thinking.
+    Let PC ponder its next move while the opponent is thinking.
 
   * #### MultiPV
     Output the N best lines (principal variations, PVs) when searching.
     Leave at 1 for best performance.
 
   * #### Skill Level
-    Lower the Skill Level in order to make Stockfish play weaker.
+    Lower the Skill Level in order to make PC play weaker.
 
   * #### Move Overhead
     Assume a time delay of x ms due to network and GUI overheads. This is useful to 
@@ -65,7 +63,7 @@ Currently, Stockfish has the following UCI options:
     Search for at least x ms per move. 
 
   * #### Slow Mover
-    Lower values will make Stockfish take less time in games, higher values will 
+    Lower values will make PC take less time in games, higher values will 
     make it think longer.
 
   * #### nodestime
@@ -73,7 +71,7 @@ Currently, Stockfish has the following UCI options:
     elapsed time. Useful for engine testing.
 
   * #### UCI_Chess960
-    An option handled by your GUI. If true, Stockfish will play Chess960.
+    An option handled by your GUI. If true, PC will play Chess960.
 
   * #### UCI_AnalyseMode
     An option handled by your GUI.
@@ -130,12 +128,12 @@ needed for optimal play and in addition being able to take into account
 the 50-move rule.
 
 
-## Compiling Stockfish yourself from the sources
+## Compiling PC yourself from the sources
 
-On Unix-like systems, it should be possible to compile Stockfish
+On Unix-like systems, it should be possible to compile PC
 directly from the source code with the included Makefile.
 
-Stockfish has support for 32 or 64-bit CPUs, the hardware POPCNT
+PC has support for 32 or 64-bit CPUs, the hardware POPCNT
 instruction, big-endian machines such as Power PC, and other platforms.
 
 In general it is recommended to run `make help` to see a list of make
@@ -145,46 +143,31 @@ set/unset some switches in the compiler command line; see file *types.h*
 for a quick reference.
 
 
-## Understanding the code base and participating in the project
-
-Stockfish's improvement over the last couple of years has been a great
-community effort. There are a few ways to help contribute to its growth.
-
 ### Donating hardware
 
-Improving Stockfish requires a massive amount of testing. You can donate
-your hardware resources by installing the [Fishtest Worker](https://github.com/glinscott/fishtest/wiki/Running-the-worker) 
-and view the current tests on [Fishtest](http://tests.stockfishchess.org/tests).
+Please don't. If you ever feel like that, please donate it to Stockfish instead, thanks.
 
 ### Improving the code
 
-If you want to help improve the code, there are several valuable ressources:
+If you want to help improve the code, please do so only if you want to make it better
+implement the specific PC variant rules. 
 
-* [In this wiki,](https://www.chessprogramming.org) many techniques used in
-Stockfish are explained with a lot of background information.
+Any other FIDE chess improvement, or Chess960 improvement, or any improvement of anything 
+Stockfish does, should be based on Stockfish and not on PC.
 
-* [The section on Stockfish](https://www.chessprogramming.org/Stockfish)
-describes many features and techniques used by Stockfish. However, it is
-generic rather than being focused on Stockfish's precise implementation.
-Nevertheless, a helpful resource.
-
-* The latest source can always be found on [GitHub](https://github.com/official-stockfish/Stockfish).
-Discussions about Stockfish take place in the [FishCooking](https://groups.google.com/forum/#!forum/fishcooking) 
-group and engine testing is done on [Fishtest](http://tests.stockfishchess.org/tests).
-If you want to help improve Stockfish, please read this [guideline](https://github.com/glinscott/fishtest/wiki/Creating-my-first-test)
-first, where the basics of Stockfish development are explained.
+* The latest source can always be found on [GitHub](https://github.com/lucrus73/Prisoners-Chess).
 
 
 ## Terms of use
 
-Stockfish is free, and distributed under the **GNU General Public License version 3**
+Prisoners' Chess is free, and distributed under the **GNU General Public License version 3**
 (GPL v3). Essentially, this means that you are free to do almost exactly
 what you want with the program, including distributing it among your
 friends, making it available for download from your web site, selling
 it (either by itself or as part of some bigger software package), or
 using it as the starting point for a software project of your own.
 
-The only real limitation is that whenever you distribute Stockfish in
+The only real limitation is that whenever you distribute Prisoners' Chess in
 some way, you must always include the full source code, or a pointer
 to where the source code can be found. If you make any changes to the
 source code, these changes must also be made available under the GPL.

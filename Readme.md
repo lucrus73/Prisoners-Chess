@@ -1,7 +1,8 @@
 ## Overview
 
 Prisoners' Chess (PC for short) is a free, powerful UCI chess engine forked from Stockfish. 
-It aims to implement the Prisoners' Chess variant  outlined [here](https://www.chess.com/forum/view/chess960-chess-variants/prisoners-chess).
+It aims to implement the Prisoners' Chess variant  outlined [here](https://www.chess.com/forum/view/chess960-chess-variants/prisoners-chess),
+but, as of today, it's a work in progress.
 Like Stockfish, it is not a complete chess program and requires a
 UCI-compatible GUI (e.g. XBoard with PolyGlot, Scid, Cute Chess, eboard, Arena,
 Sigma Chess, Shredder, Chess Partner or Fritz) in order to be used comfortably.

@@ -367,14 +367,6 @@ constexpr CastlingRight operator|(Color c, CastlingSide s) {
   return CastlingRight(WHITE_OO << ((s == QUEEN_SIDE) + 2 * c));
 }
 
-constexpr Value mate_in(int ply) {
-  return VALUE_MATE - ply;
-}
-
-constexpr Value mated_in(int ply) {
-  return -VALUE_MATE + ply;
-}
-
 constexpr Square make_square(File f, Rank r) {
   return Square((r << 3) + f);
 }

@@ -604,16 +604,22 @@ namespace {
             return (ss->ply >= MAX_PLY && !inCheck) ? evaluate(pos)
                                                     : value_draw(depth, pos.this_thread());
 
-        // Step 3. Mate distance pruning. Even if we mate at the next move our score
+        // Original comment from Stockfish code (see below for updated rationale):
+	// Step 3. Mate distance pruning. Even if we mate at the next move our score
         // would be at best mate_in(ss->ply+1), but if alpha is already bigger because
         // a shorter mate was found upward in the tree then there is no need to search
         // because we will never beat the current alpha. Same logic but with reversed
         // signs applies also in the opposite condition of being mated instead of giving
         // mate. In this case return a fail-high score.
-        alpha = std::max(mated_in(ss->ply), alpha);
-        beta = std::min(mate_in(ss->ply+1), beta);
-        if (alpha >= beta)
-            return alpha;
+	//
+	// PC updated logic:
+	// If we mate at next move, our score in PC depends on the position, so we can't
+	// assume anything about the score and we can't prune. Let's comment out the code,
+	// which, in its current form, would not compile anyway on the PC fork.
+        // alpha = std::max(mated_in(ss->ply), alpha);
+        // beta = std::min(mate_in(ss->ply+1), beta);
+        // if (alpha >= beta)
+        //    return alpha;
     }
 
     assert(0 <= ss->ply && ss->ply < MAX_PLY);
@@ -1190,7 +1196,7 @@ moves_loop: // When in check, search starts from here
 
     if (!moveCount)
         bestValue = excludedMove ? alpha
-                   :     inCheck ? mated_in(ss->ply) : VALUE_DRAW;
+                   :     inCheck ? mated_in(ss->ply, pos) : VALUE_DRAW;
     else if (bestMove)
     {
         // Quiet best move: update move sorting heuristics
@@ -1426,7 +1432,7 @@ moves_loop: // When in check, search starts from here
     // All legal moves have been searched. A special case: If we're in check
     // and no legal moves were found, it is checkmate.
     if (inCheck && bestValue == -VALUE_INFINITE)
-        return mated_in(ss->ply); // Plies to mate from the root
+        return mated_in(ss->ply, pos); // Plies to mate from the root
 
     tte->save(posKey, value_to_tt(bestValue, ss->ply), pvHit,
               bestValue >= beta ? BOUND_LOWER :

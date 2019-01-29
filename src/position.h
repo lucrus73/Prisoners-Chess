@@ -429,4 +429,12 @@ inline void Position::do_move(Move m, StateInfo& newSt) {
   do_move(m, newSt, gives_check(m));
 }
 
+constexpr Value mate_in(int ply, const Position& pos) {
+  return VALUE_MATE - ply;
+}
+
+constexpr Value mated_in(int ply, const Position& pos) {
+  return -VALUE_MATE + ply;
+}
+
 #endif // #ifndef POSITION_H_INCLUDED
